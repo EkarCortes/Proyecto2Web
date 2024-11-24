@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Curso</title>
+</head>
+<body>
+  
+<h1>Agregar Curso</h1>
+
+<!-- Campo para el nombre del curso -->
+<input type="text" id="nombre_curso" placeholder="Nombre del Curso">
+
+<!-- Campo para los créditos del curso -->
+<input type="text" id="creditos" placeholder="Créditos">
+
+<input type="text" id="codigoCarrera" placeholder="Codigo Carrera">
+
+<!-- Botón para enviar los datos al servidor -->
+<button onclick="agregarCurso()">Enviar</button>
+
+<!-- Sección para mostrar el resultado de la operación -->
+<p id="mensaje_resultado_curso"></p>
+
+<script>
+    /**
+     * Función para agregar un nuevo curso.
+     * Recoge los datos de los campos de entrada y los envía al API.
+     */
+    function agregarCurso() {
+        // Recoge los valores ingresados por el usuario
+        const nombreCurso = document.getElementById("nombre_curso").value;
+        const creditos = parseInt(document.getElementById("creditos").value); // Convierte a número entero
+        const codigo_carrera = document.getElementById("codigoCarrera").value;
+
+
+        // Crea un objeto con las claves y valores explícitos
+        const datos = { 
+            Nombre: nombreCurso, 
+            Creditos: creditos ,
+            CursoCarrera : codigo_carrera
+        };
+
+        // Realiza la solicitud al API utilizando Fetch
+        fetch("http://localhost/LAB7/CursoAPI/controlador/curso.php?op=Insertar", {
+            method: "POST", // Método HTTP
+            headers: { "Content-Type": "application/json" }, // Cabecera indicando que se envía JSON
+            body: JSON.stringify(datos) // Convierte el objeto datos en formato JSON para enviarlo
+        })
+        .then(respuesta => respuesta.json()) // Decodifica el JSON de la respuesta
+        .then(datos => {
+            // Accede al mensaje del JSON y lo muestra
+            if (datos.Correcto) {
+                document.getElementById("mensaje_resultado_curso").innerText = "Curso agregado correctamente.";
+            } else {
+                document.getElementById("mensaje_resultado_curso").innerText = "Error en la respuesta del servidor.";
+            }
+        })
+        .catch(error => {
+            // Maneja errores durante la solicitud y los muestra en la página
+            if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+                document.getElementById("mensaje_resultado_curso").innerText = "Error: No se pudo conectar con el servidor. Verifique que el servidor esté en funcionamiento y que la URL sea correcta.";
+            } else {
+                document.getElementById("mensaje_resultado_curso").innerText = "Error: " + error.message;
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
