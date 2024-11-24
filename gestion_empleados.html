@@ -30,7 +30,10 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Descripción</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Departamento</th>
+                <th>Rol</th>
             </tr>
         </thead>
         <tbody>
@@ -54,8 +57,26 @@
                         <input type="text" class="form-control" id="nombre" required>
                     </div>
                     <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="descripcion" required>
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="email" class="form-control" id="correo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idDepartamento" class="form-label">Departamento</label>
+                        <select class="form-control" id="idDepartamento" required>
+                            <option value="">Seleccione un Departamento</option>
+                            <!-- Los departamentos serán llenados dinámicamente desde la base de datos -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idRol" class="form-label">Rol</label>
+                        <select class="form-control" id="idRol" required>
+                            <option value="">Seleccione un Rol</option>
+                            <!-- Los roles serán llenados dinámicamente desde la base de datos -->
+                        </select>
                     </div>
                 </form>
             </div>
@@ -69,6 +90,6 @@
 
 <!-- Vinculación de Bootstrap JS y Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
+<script src="/js/empleados.js"></script>
 </body>
 </html>
