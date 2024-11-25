@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 
 // Incluye los archivos necesarios para la conexión a la base de datos y la clase Rol
 require_once("../configuracion/conexion.php");
-require_once("../modelos/Rol.php");
+require_once("../modelos/Roles.php");
 
 // Crea una instancia de la clase Rol
 $rol = new Rol();
@@ -35,7 +35,7 @@ switch ($_GET["op"]) {
     // Inserta un nuevo rol
     case "Insertar":
         // Llama al método para insertar un nuevo rol
-        $datos = $rol->insertar_rol($body["nombre_rol"], $body["descripcion"]);
+        $datos = $rol->insertar_rol($body["nombre_rol"]);
         // Devuelve una respuesta indicando que la inserción fue correcta
         echo json_encode(["Correcto" => "Inserción Realizada"]);
         break;
@@ -43,7 +43,7 @@ switch ($_GET["op"]) {
     // Actualiza un rol existente
     case "Actualizar":
         // Llama al método para actualizar un rol existente
-        $datos = $rol->actualizar_rol($body["id_rol"], $body["nombre_rol"], $body["descripcion"]);
+        $datos = $rol->actualizar_rol($body["id_rol"], $body["nombre_rol"]);
         // Devuelve una respuesta indicando que la actualización fue correcta
         echo json_encode(["Correcto" => "Actualización Realizada"]);
         break;

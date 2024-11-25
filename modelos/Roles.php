@@ -46,12 +46,11 @@ class Rol extends Conectar {
         parent::establecer_codificacion();
         
         // Sentencia SQL para insertar un nuevo rol
-        $sentencia_sql = "INSERT INTO roles(nombre_rol, descripcion) VALUES (?, ?)";
+        $sentencia_sql = "INSERT INTO roles(nombre_rol) VALUES (?)";
 
         // Prepara la sentencia SQL
         $sentencia = $conexion->prepare($sentencia_sql);
         $sentencia->bindValue(1, $nombre_rol);  // Asocia el nombre del rol
-        $sentencia->bindValue(2, $descripcion);  // Asocia la descripción del rol
 
         // Ejecuta la sentencia
         $sentencia->execute();
@@ -61,19 +60,18 @@ class Rol extends Conectar {
     }
 
     // Actualiza un rol existente
-    public function actualizar_rol($id_rol, $nombre_rol, $descripcion) {
+    public function actualizar_rol($id_rol, $nombre_rol) {
         // Establece la conexión a la base de datos
         $conexion = parent::conectar_bd();
         parent::establecer_codificacion();
         
         // Sentencia SQL para actualizar un rol existente
-        $sentencia_sql = "UPDATE roles SET nombre_rol = ?, descripcion = ? WHERE id_rol = ?";
+        $sentencia_sql = "UPDATE roles SET nombre_rol = ? WHERE id_rol = ?";
 
         // Prepara la sentencia SQL
         $sentencia = $conexion->prepare($sentencia_sql);
-        $sentencia->bindValue(1, $nombre_rol);  // Asocia el nombre del rol
-        $sentencia->bindValue(2, $descripcion);  // Asocia la descripción del rol
-        $sentencia->bindValue(3, $id_rol);  // Asocia el ID del rol
+        $sentencia->bindValue(1, $nombre_rol); // Asocia el nombre del rol
+        $sentencia->bindValue(2, $id_rol);  // Asocia el ID del rol
 
         // Ejecuta la sentencia
         $sentencia->execute();
