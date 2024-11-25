@@ -4,7 +4,7 @@
     left: 0;
     height: 100%;
     width: 250px;
-    background-color: #343a40;
+    background-color: #07305a;
     transition: all 0.3s;
     z-index: 100;
   }
@@ -31,7 +31,7 @@
     left: 20px;
     z-index: 105;
     font-size: 20px;
-    background-color: #343a40;
+    background-color: #07305a;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -46,3 +46,60 @@
   .content.shifted {
     margin-left: 0;
   }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #0056b3;
+  }
+
+  .highlight {
+    color: #f39c12;
+    font-weight: bold;
+  }
+
+  .company-info {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .product-card:hover {
+    transform: scale(1.05);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer {
+    background-color: #07305a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: auto 100;
+    bottom: 0; /* Asegura que se quede al fondo */
+    left: 0; /* Asegura que se extienda desde el borde izquierdo */
+    transition: margin-left 0.3s; /* Agrega transición cuando se mueva con la sidebar */
+  }
+
+
+  .embed-responsive {
+    margin-bottom: 30px; /* Ajusta el margen inferior para el video */
+  }
+
+  #head_principal {
+    background-color: #07305a; /* El mismo color que el footer */
+    color: white; /* Asegura que el texto sea legible con fondo oscuro */
+    padding: 35px 20px; /* Opcional: ajusta el espaciado */
+  }
+  
