@@ -9,11 +9,7 @@ class Empleado extends Conectar {
         parent::establecer_codificacion();
         
         // Consulta SQL para obtener todos los empleados
-        $consulta_sql = "SELECT e.id_empleado, e.nombre, e.apellido, e.correo, e.id_departamento, e.id_rol, e.fecha_registro, 
-                                d.nombre_departamento, r.nombre_rol
-                         FROM empleados e
-                         JOIN departamentos d ON e.id_departamento = d.id_departamento
-                         JOIN roles r ON e.id_rol = r.id_rol";   
+        $consulta_sql = "SELECT * FROM empleados";  
 
         // Prepara la consulta SQL
         $consulta = $conexion->prepare($consulta_sql);
@@ -30,13 +26,8 @@ class Empleado extends Conectar {
         parent::establecer_codificacion();
         
         // Consulta SQL para obtener un empleado específico por su ID
-        $consulta_sql = "SELECT e.id_empleado, e.nombre, e.apellido, e.correo, e.id_departamento, e.id_rol, e.fecha_registro, 
-                                d.nombre_departamento, r.nombre_rol
-                         FROM empleados e
-                         JOIN departamentos d ON e.id_departamento = d.id_departamento
-                         JOIN roles r ON e.id_rol = r.id_rol
-                         WHERE e.id_empleado = ?";
-
+        $consulta_sql = "SELECT * FROM empleados WHERE id_empleado = ?";
+        
         // Prepara la consulta SQL
         $consulta = $conexion->prepare($consulta_sql);
         $consulta->bindValue(1, $id_empleado);  // Asocia el valor del ID del empleado
@@ -55,7 +46,7 @@ class Empleado extends Conectar {
         parent::establecer_codificacion();
         
         // Sentencia SQL para insertar un nuevo empleado
-        $sentencia_sql = "INSERT INTO empleados(nombre, apellido, correo, id_departamento, id_rol) VALUES (?, ?, ?, ?, ?)";
+        $sentencia_sql = "INSERT INTO empleados(nombre, apellido, correo, departamento, rol) VALUES (?, ?, ?, ?, ?)";
 
         // Prepara la sentencia SQL
         $sentencia = $conexion->prepare($sentencia_sql);
@@ -79,7 +70,7 @@ class Empleado extends Conectar {
         parent::establecer_codificacion();
         
         // Sentencia SQL para actualizar un empleado existente
-        $sentencia_sql = "UPDATE empleados SET nombre = ?, apellido = ?, correo = ?, id_departamento = ?, id_rol = ? 
+        $sentencia_sql = "UPDATE empleados SET nombre = ?, apellido = ?, correo = ?, departamento = ?, rol = ? 
                           WHERE id_empleado = ?";
 
         // Prepara la sentencia SQL

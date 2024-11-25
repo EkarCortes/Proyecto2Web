@@ -1,48 +1,57 @@
+/* Sidebar */
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px;
-    background-color: #343a40;
-    transition: all 0.3s;
-    z-index: 100;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #343a40;
+  transition: all 0.3s ease;
+  z-index: 100;
+  visibility: visible; /* Asegúrate de que esté visible por defecto */
+  opacity: 1; /* Asegúrate de que tenga visibilidad */
+}
 
-  .sidebar.active {
-    width: 0;
-  }
+.sidebar.active {
+  width: 0;
+  visibility: hidden; /* Oculta el sidebar completamente */
+  opacity: 0; /* El sidebar es transparente cuando está cerrado */
+}
 
-  .sidebar a {
-    color: white;
-    padding: 15px;
-    text-decoration: none;
-    display: block;
-    transition: 0.3s;
-  }
+/* Enlaces dentro del sidebar */
+.sidebar a {
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+}
 
-  .sidebar a:hover {
-    background-color: #575757;
-  }
+/* Efecto al pasar el mouse sobre los enlaces */
+.sidebar a:hover {
+  background-color: #575757;
+}
 
-  .toggle-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 105;
-    font-size: 20px;
-    background-color: #343a40;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-  }
+/* Botón para mostrar/ocultar el sidebar */
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 105;
+  font-size: 20px;
+  background-color: #343a40;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
 
-  .content {
-    margin-left: 250px;
-    transition: margin-left 0.3s;
-  }
+/* Contenido principal */
+.content {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+}
 
-  .content.shifted {
-    margin-left: 0;
-  }
+.content.shifted {
+  margin-left: 0;
+}

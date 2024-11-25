@@ -1,3 +1,18 @@
+
+<?php
+// Encabezados CORS
+header("Access-Control-Allow-Origin: *");  // Permite solicitudes de cualquier origen (puedes especificar un dominio específico en lugar de "*")
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");  // Métodos HTTP permitidos
+header("Access-Control-Allow-Headers: Content-Type");  // Encabezados permitidos
+
+// Si la solicitud es una preflight (OPTIONS), responde y termina la ejecución.
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    exit(0);
+}
+
+// El resto de tu código PHP
+?>
+
 <?php
 
 // Establece el tipo de contenido a JSON
@@ -35,7 +50,7 @@ switch ($_GET["op"]) {
     // Inserta un nuevo empleado
     case "Insertar":
         // Llama al método para insertar un nuevo empleado
-        $datos = $empleado->insertar_empleado($body["nombre"], $body["apellido"], $body["correo"], $body["id_departamento"], $body["id_rol"]);
+        $datos = $empleado->insertar_empleado($body["nombre"], $body["apellido"], $body["correo"], $body["departamento"], $body["rol"]);
         // Devuelve una respuesta indicando que la inserción fue correcta
         echo json_encode(["Correcto" => "Inserción Realizada"]);
         break;

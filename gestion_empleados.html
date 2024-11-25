@@ -4,29 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Empleados, Departamentos o Roles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/empleados.css">
+    <link rel="stylesheet" href="/css/gestion.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    
 </head>
 <body>
+  <!-- Botón para abrir y cerrar la barra lateral -->
+  <button class="toggle-btn" id="toggleButton" style="right: 20px; left: auto;"><i class="bi bi-list"></i></button>
 
-<div class="container mt-5">
-    <h2>Gestión de Empleados</h2>
+  <!-- Barra lateral -->
+  <div class="sidebar" id="sidebar">
+      <a href="gestion_empleados.html" class="sidebar-link">Gestión de Empleados</a>
+      <a href="gestion_roles.html" class="sidebar-link active">Gestión de Roles</a>
+      <a href="gestion_departamentos.html" class="sidebar-link">Gestión de Departamentos</a>
+  </div>
+  <div class="content" id="content">
+<div class="container card p-3 mt-5">
+    <h2 class="text-center">Gestión de Empleados</h2>
 
-    <div class="row my-3">
-        <div class="col-6">
-            <button class="btn btn-primary" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar</button>
-            <button class="btn btn-warning" id="btnEditar" disabled>Editar</button>
-            <button class="btn btn-danger" id="btnEliminar" disabled>Eliminar</button>
+    <div class="my-4">
+        <div class="row my-3">
+            <div class="col-6">
+                <div class="col-12">
+                    <input type="text" id="searchId" class="form-control" placeholder="Buscar por ID"
+                        onkeyup="buscarRegistro()" style="width: 300px; display: inline-block;">
+                </div>
+            </div>
+            <div class="col-6 text-end">
+                <button class="btn btn-primary" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar</button>
+                <button type="button" class="btn btn-warning" id="btnEditar" data-bs-toggle="modal" data-bs-target="#modalEditar" disabled>Editar</button>
+                <button type="button" class="btn btn-danger" id="btnEliminar" disabled>Eliminar</button>
+            </div>
         </div>
-        <div class="col-6 text-end">
-            <input type="text" id="searchId" class="form-control" placeholder="Buscar por ID" onkeyup="buscarRegistro()">
-        </div>
+       
     </div>
 
     <!-- Tabla con datos -->
-    <table class="table table-bordered" id="tablaRegistros">
-        <thead>
+     <table id="tablaEmpleados" class=" card-shadow table table-striped table-hover">
+        <thead class="thead-dark" style="background-color: #343A40;">
+    
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
@@ -87,9 +106,13 @@
         </div>
     </div>
 </div>
+</div>
 
 <!-- Vinculación de Bootstrap JS y Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/empleados.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="/js/sidebar.js"></script>
 </body>
 </html>

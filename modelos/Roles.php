@@ -40,24 +40,25 @@ class Rol extends Conectar {
     }
 
     // Inserta un nuevo rol
-    public function insertar_rol($nombre_rol, $descripcion) {
+    public function insertar_rol($nombre_rol) {
         // Establece la conexión a la base de datos
         $conexion = parent::conectar_bd();
         parent::establecer_codificacion();
         
         // Sentencia SQL para insertar un nuevo rol
         $sentencia_sql = "INSERT INTO roles(nombre_rol) VALUES (?)";
-
+    
         // Prepara la sentencia SQL
         $sentencia = $conexion->prepare($sentencia_sql);
         $sentencia->bindValue(1, $nombre_rol);  // Asocia el nombre del rol
-
+    
         // Ejecuta la sentencia
         $sentencia->execute();
-
+    
         // Retorna el resultado (aunque no es necesario para un insert, se puede omitir)
-        return $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+        return true; // Aquí cambiamos el valor que se devuelve para indicar éxito
     }
+    
 
     // Actualiza un rol existente
     public function actualizar_rol($id_rol, $nombre_rol) {

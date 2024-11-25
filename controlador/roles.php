@@ -1,4 +1,18 @@
 <?php
+// Encabezados CORS
+header("Access-Control-Allow-Origin: *");  // Permite solicitudes de cualquier origen (puedes especificar un dominio específico en lugar de "*")
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");  // Métodos HTTP permitidos
+header("Access-Control-Allow-Headers: Content-Type");  // Encabezados permitidos
+
+// Si la solicitud es una preflight (OPTIONS), responde y termina la ejecución.
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    exit(0);
+}
+
+// El resto de tu código PHP
+?>
+
+<?php
 
 // Establece el tipo de contenido a JSON
 header("Content-Type: application/json");
@@ -37,9 +51,9 @@ switch ($_GET["op"]) {
         // Llama al método para insertar un nuevo rol
         $datos = $rol->insertar_rol($body["nombre_rol"]);
         // Devuelve una respuesta indicando que la inserción fue correcta
-        echo json_encode(["Correcto" => "Inserción Realizada"]);
+        echo json_encode(["success" => true, "message" => "Inserción Realizada"]);
         break;
-
+        
     // Actualiza un rol existente
     case "Actualizar":
         // Llama al método para actualizar un rol existente

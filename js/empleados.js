@@ -1,36 +1,144 @@
-// URL de la API
-const apiUrl = 'https://tudominio/api/empleados';  // Cambia esta URL por la URL de tu API
+// Variable global para almacenar el empleado seleccionado
+let empleadoSeleccionado = null;
 
-// Función para cargar los datos de empleados
+// Función para cargar los empleados desde el servidor
 function cargarEmpleados() {
-    axios.get(apiUrl)
+    axios.get('http://localhost/Proyecto2Web/controlador/empleados.php?op=ObtenerTodos')
         .then(response => {
-            // Limpiar la tabla antes de mostrar los nuevos datos
-            const tablaRegistros = document.getElementById('tablaRegistros').getElementsByTagName('tbody')[0];
-            tablaRegistros.innerHTML = ''; // Limpiar tabla
+            const empleados = response.data;
+            const tabla = document.getElementById('tablaEmpleados').getElementsByTagName('tbody')[0];
+            tabla.innerHTML = '';  // Limpiar la tabla antes de llenarla
 
-            // Verificar si la respuesta contiene datos
-            if (response.data && response.data.length > 0) {
-                // Recorrer los empleados y agregar una fila en la tabla
-                response.data.forEach(empleado => {
-                    const row = tablaRegistros.insertRow();  // Insertar nueva fila
+            empleados.forEach(empleado => {
+                const fila = tabla.insertRow();
+                fila.setAttribute('data-id', empleado.id_empleado);  // Establecer el ID del empleado como atributo
+                fila.innerHTML = `
+                    <td>${empleado.id_empleado}</td>
+                    <td>${empleado.nombre}</td>
+                    <td>${empleado.apellido}</td>
+                    <td>${empleado.correo}</td>
+                    <td>${empleado.departamento}</td>
+                    <td>${empleado.rol}</td>
+                `;
+                // Agregar un evento de clic a cada fila para seleccionarla
+                fila.addEventListener('click', () => seleccionarFila(fila, empleado));
+            });
+        })
+        .catch(error => console.error('Error al cargar los empleados:', error));
+}
 
-                    // Insertar celdas con los datos del empleado
-                    row.insertCell(0).textContent = empleado.id;  // ID
-                    row.insertCell(1).textContent = empleado.nombre;  // Nombre
-                    row.insertCell(2).textContent = empleado.apellido;  // Apellido
-                    row.insertCell(3).textContent = empleado.correo;  // Correo
-                    row.insertCell(4).textContent = empleado.departamento;  // Departamento
-                    row.insertCell(5).textContent = empleado.rol;  // Rol
-                });
-            } else {
-                console.log('No se encontraron empleados.');
-            }
+// Función para seleccionar una fila
+function seleccionarFila(fila, empleado) {
+    // Desmarcar cualquier fila previamente seleccionada
+    const filas = document.getElementById('tablaRoles').getElementsByTagName('tr');
+    for (let i = 0; i < filas.length; i++) {
+        filas[i].classList.remove('seleccionado');
+    }
+
+    // Marcar la fila seleccionada
+    fila.classList.add('seleccionado');
+
+    // Guardar el empleado seleccionado
+    empleadoSeleccionado = empleado;
+
+    // Habilitar los botones de Editar y Eliminar
+    document.getElementById('btnEditar').disabled = false;
+    document.getElementById('btnEliminar').disabled = false;
+}
+
+// Función para agregar un nuevo empleado
+function agregarEmpleado() {
+    const nombre = document.getElementById('nombre').value;
+    const apellido = document.getElementById('apellido').value;
+    const correo = document.getElementById('correo').value;
+    const departamento = document.getElementById('idDepartamento').value;
+    const rol = document.getElementById('idRol').value;
+
+    if (nombre.trim() === '' || apellido.trim() === '' || correo.trim() === '' || departamento === '' || rol === '') {
+        alert('Por favor complete todos los campos');
+        return;
+    }
+
+    const data = { nombre, apellido, correo, departamento, rol };
+
+    // Llamada para agregar el empleado
+    axios.post('http://localhost/Proyecto2Web/controlador/empleados.php?op=Insertar', data)
+        .then(response => {
+            alert('Empleado agregado correctamente');
+            cargarEmpleados();  // Recargar la lista de empleados
+            limpiarCamposAgregar();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregar'));
+            modal.hide();
         })
         .catch(error => {
-            console.error('Error al cargar los datos de empleados:', error);
+            console.error('Error al agregar el empleado:', error);
+            alert('Error al agregar el empleado');
         });
 }
 
-// Llamar a la función para cargar los empleados al cargar la página
-window.onload = cargarEmpleados;
+// Función para limpiar los campos del modal de agregar
+function limpiarCamposAgregar() {
+    document.getElementById('nombre').value = '';
+    document.getElementById('apellido').value = '';
+    document.getElementById('correo').value = '';
+    document.getElementById('idDepartamento').value = '';
+    document.getElementById('idRol').value = '';
+}
+
+// Función para cargar departamentos y roles en los campos del modal de agregar
+function cargarDepartamentosYRoles() {
+    // Cargar departamentos
+    axios.get('http://localhost/Proyecto2Web/controlador/departamentos.php?op=ObtenerTodos')
+        .then(response => {
+            const departamentos = response.data;
+            const selectDepartamento = document.getElementById('idDepartamento');
+            departamentos.forEach(departamento => {
+                const option = document.createElement('option');
+                option.value = departamento.nombre_departamento;
+                option.textContent = departamento.nombre_departamento;
+                selectDepartamento.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar los departamentos:', error));
+
+    // Cargar roles
+    axios.get('http://localhost/Proyecto2Web/controlador/roles.php?op=ObtenerTodos')
+        .then(response => {
+            const roles = response.data;
+            const selectRol = document.getElementById('idRol');
+            roles.forEach(rol => {
+                const option = document.createElement('option');
+                option.value = rol.nombre_rol;
+                option.textContent = rol.nombre_rol;
+                selectRol.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar los roles:', error));
+}
+
+// Asignar eventos a los botones
+document.addEventListener('DOMContentLoaded', () => {
+    cargarEmpleados(); // Cargar los empleados al iniciar la página
+    cargarDepartamentosYRoles(); // Cargar departamentos y roles al iniciar
+
+    // Evento para el botón "Guardar" (Agregar empleado)
+    document.getElementById('btnGuardar').addEventListener('click', agregarEmpleado);
+});
+
+// Función para buscar empleados por ID
+function buscarRegistro() {
+    const idBusqueda = document.getElementById('searchId').value.trim();
+    const tabla = document.getElementById('tablaRoles');
+    const filas = tabla.getElementsByTagName('tr');
+
+    for (let i = 1; i < filas.length; i++) {
+        const fila = filas[i];
+        const idEmpleado = fila.getElementsByTagName('td')[0].textContent.trim();
+
+        if (idBusqueda === '' || idEmpleado.includes(idBusqueda)) {
+            fila.style.display = '';
+        } else {
+            fila.style.display = 'none';
+        }
+    }
+}
