@@ -46,10 +46,6 @@ function seleccionarFila(fila, departamento) {
 
 // Función para agregar un nuevo departamento
 function agregarDepartamento() {
-    // Deshabilitar los botones de Editar y Eliminar
-    document.getElementById('btnEditar').disabled = true;
-    document.getElementById('btnEliminar').disabled = true;
-
     const nombreDepartamento = document.getElementById('nombreDepartamento').value;
 
     if (nombreDepartamento.trim() === '') {
@@ -59,12 +55,11 @@ function agregarDepartamento() {
 
     const data = { nombre_departamento: nombreDepartamento };
 
-    // Llamada para agregar departamento
     axios.post('http://localhost/Proyecto2Web/controlador/departamentos.php?op=Insertar', data)
         .then(response => {
             alert('Departamento agregado correctamente');
-            cargarDepartamentos();  // Recargar los departamentos
-            limpiarCamposAgregar();
+            cargarDepartamentos(); // Recargar la lista de departamentos
+            document.getElementById('nombreDepartamento').value = ''; // Limpiar el campo
             const modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregar'));
             modal.hide();
         })
@@ -73,6 +68,9 @@ function agregarDepartamento() {
             alert('Error al agregar el departamento');
         });
 }
+
+// Similarmente actualiza las funciones para Editar y Eliminar, solo manejando `id_departamento` y `nombre_departamento`.
+
 
 // Función para actualizar un departamento
 function actualizarDepartamento() {
@@ -88,12 +86,14 @@ function actualizarDepartamento() {
         nombre_departamento: nombreDepartamento
     };
 
+
     // Llamada para actualizar el departamento
     axios.post('http://localhost/Proyecto2Web/controlador/departamentos.php?op=Actualizar', data)
         .then(response => {
             alert('Departamento actualizado correctamente');
             cargarDepartamentos();  // Recargar los departamentos
             limpiarCamposEditar();
+            console.log(data);
             const modal = bootstrap.Modal.getInstance(document.getElementById('modalEditar'));
             modal.hide();
         })
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnGuardarDepartamento').addEventListener('click', agregarDepartamento);
 
     // Evento para el botón "Actualizar" (Editar)
-   // document.getElementById('btnActualizarDepartamento').addEventListener('click', actualizarDepartamento);
+   document.getElementById('btnActualizarDepartamento').addEventListener('click', actualizarDepartamento);
 
     // Evento para el botón "Eliminar"
     document.getElementById('btnEliminar').addEventListener('click', eliminarDepartamento);

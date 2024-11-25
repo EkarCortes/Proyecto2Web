@@ -40,7 +40,7 @@ class Departamento extends Conectar {
     }
 
     // Inserta un nuevo departamento
-    public function insertar_departamento($nombre_departamento, $descripcion) {
+    public function insertar_departamento($nombre_departamento) {
         // Establece la conexión a la base de datos
         $conexion = parent::conectar_bd();
         parent::establecer_codificacion();
@@ -60,19 +60,18 @@ class Departamento extends Conectar {
     }
 
     // Actualiza un departamento existente
-    public function actualizar_departamento($id_departamento, $nombre_departamento, $descripcion) {
+    public function actualizar_departamento($id_departamento, $nombre_departamento) {
         // Establece la conexión a la base de datos
         $conexion = parent::conectar_bd();
         parent::establecer_codificacion();
         
         // Sentencia SQL para actualizar un departamento existente
-        $sentencia_sql = "UPDATE departamentos SET nombre_departamento = ?, descripcion = ? WHERE id_departamento = ?";
+        $sentencia_sql = "UPDATE departamentos SET nombre_departamento = ? WHERE id_departamento = ?";
 
         // Prepara la sentencia SQL
         $sentencia = $conexion->prepare($sentencia_sql);
         $sentencia->bindValue(1, $nombre_departamento);  // Asocia el nombre del departamento
-        $sentencia->bindValue(2, $descripcion);  // Asocia la descripción del departamento
-        $sentencia->bindValue(3, $id_departamento);  // Asocia el ID del departamento
+        $sentencia->bindValue(2, $id_departamento);  // Asocia el ID del departamento
 
         // Ejecuta la sentencia
         $sentencia->execute();

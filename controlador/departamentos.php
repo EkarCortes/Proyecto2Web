@@ -45,7 +45,7 @@ switch ($_GET["op"]) {
     // Actualiza un departamento existente
     case "Actualizar":
         // Llama al método para actualizar un departamento existente
-        $datos = $departamento->actualizar_departamento($body["id_departamento"], $body["nombre_departamento"], $body["descripcion"]);
+        $datos = $departamento->actualizar_departamento($body["id_departamento"], $body["nombre_departamento"]);
         // Devuelve una respuesta indicando que la actualización fue correcta
         echo json_encode(["Correcto" => "Actualización Realizada"]);
         break;
