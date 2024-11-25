@@ -58,8 +58,6 @@ class Empleado extends Conectar {
 
         // Ejecuta la sentencia
         $sentencia->execute();
-
-        // Retorna el resultado (aunque no es necesario para un insert, se puede omitir)
         return $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
 

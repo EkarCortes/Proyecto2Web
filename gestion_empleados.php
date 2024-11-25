@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Empleados, Departamentos o Roles</title>
+    <title>Gestión de Empleados</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,10 +17,13 @@
 
   <!-- Barra lateral -->
   <div class="sidebar" id="sidebar">
+  <a href="index.php" class="sidebar-link">Inicio</a>
       <a href="gestion_empleados.php" class="sidebar-link">Gestión de Empleados</a>
       <a href="gestion_roles.php" class="sidebar-link active">Gestión de Roles</a>
       <a href="gestion_departamentos.php" class="sidebar-link">Gestión de Departamentos</a>
   </div>
+
+    <!-- Contenido de la página -->
   <div class="content" id="content">
 <div class="container card p-3 mt-5">
     <h2 class="text-center">Gestión de Empleados</h2>
@@ -61,13 +64,13 @@
     </table>
 </div>
 
-<!-- Modal para agregar/editar -->
+<!-- Modal para agregar -->
 <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalAgregarLabel">Agregar Registro</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="formRegistro">
@@ -87,14 +90,13 @@
                         <label for="idDepartamento" class="form-label">Departamento</label>
                         <select class="form-control" id="idDepartamento" required>
                             <option value="">Seleccione un Departamento</option>
-                            <!-- Los departamentos serán llenados dinámicamente desde la base de datos -->
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="idRol" class="form-label">Rol</label>
                         <select class="form-control" id="idRol" required>
                             <option value="">Seleccione un Rol</option>
-                            <!-- Los roles serán llenados dinámicamente desde la base de datos -->
+                           
                         </select>
                     </div>
                 </form>
@@ -106,12 +108,14 @@
         </div>
     </div>
   </div>
+
+<!-- Modal para editar -->
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalEditarLabel">Editar Empleado</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="formEditarEmpleado">
@@ -131,14 +135,12 @@
                         <label for="departamentoEditar" class="form-label">Departamento</label>
                         <select class="form-control" id="departamentoEditar" required>
                             <option value="">Seleccione un Departamento</option>
-                            <!-- Los departamentos serán llenados dinámicamente desde la base de datos -->
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="dolEditar" class="form-label">Rol</label>
                         <select class="form-control" id="rolEditar" required>
                             <option value="">Seleccione un Rol</option>
-                            <!-- Los roles serán llenados dinámicamente desde la base de datos -->
                         </select>
                     </div>
                 </form>
@@ -152,7 +154,6 @@
 </div>
 </div>
 
-<!-- Vinculación de Bootstrap JS y Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="./js/empleados.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

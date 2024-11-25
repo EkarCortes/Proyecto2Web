@@ -17,11 +17,13 @@
 
     <!-- Barra lateral -->
     <div class="sidebar" id="sidebar">
+    <a href="index.php" class="sidebar-link">Inicio</a>
         <a href="gestion_empleados.php" class="sidebar-link">Gestión de Empleados</a>
         <a href="gestion_roles.php" class="sidebar-link active">Gestión de Roles</a>
         <a href="gestion_departamentos.php" class="sidebar-link">Gestión de Departamentos</a>
     </div>
 
+     <!-- Contenedor Principal -->
     <div class="content" id="content">
         <div class="container card p-3 mt-5 shadow-lg">
             <h2 class="text-center ">Gestión de Roles</h2>
@@ -41,6 +43,7 @@
                     </div>
                 </div>
 
+                <!-- Tabla con datos -->
                 <table id="tablaRoles" class=" card-shadow table table-striped table-hover">
                     <thead class="thead-dark" style="background-color: #07305a;">
                         <tr>
@@ -84,7 +87,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalEditarLabel">Editar Rol</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form id="formEditarRol">
@@ -101,9 +104,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

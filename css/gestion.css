@@ -22,12 +22,11 @@ table {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-th {  /* Color de fondo para el encabezado */
-    color: rgb(214, 212, 212);  /* Color de texto en el encabezado */
+th {  
+    color: rgb(214, 212, 212);  
     padding: 12px;
-    text-align: left;/* Borde inferior */
+    text-align: left;/
 }
-/* Estilo para la tarjeta */
 
 
 table th,
@@ -36,15 +35,13 @@ table td {
 }
 
 table tbody tr {
-    transition: background-color 0.3s ease; /* Animación suave para el hover */
+    transition: background-color 0.3s ease; 
 }
 
 /* Hover a las filas de la tabla */
 table tbody tr:hover {
-    cursor: pointer; /* Cambio de cursor para indicar interactividad */
+    cursor: pointer; 
 }
-
-/* Efecto hover en las celdas (opcional) */
 
 
 /* Botones */

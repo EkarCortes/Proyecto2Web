@@ -12,7 +12,9 @@
   <!-- Barra lateral y botón de alternar (como en el ejemplo anterior) -->
   <button class="toggle-btn" id="toggleButton" style="right: 20px; left: auto;"><i class="bi bi-list"></i></button>
 
+  <!-- Barra lateral -->
   <div class="sidebar" id="sidebar">
+    <a href="index.php" class="sidebar-link">Inicio</a>
     <a href="gestion_empleados.php">Gestión de Empleados</a>
     <a href="gestion_roles.php">Gestión de Roles</a>
     <a href="gestion_departamentos.php">Gestión de Departamentos</a>
@@ -26,11 +28,6 @@
             <p>Ofrecemos soluciones innovadoras en tecnología para ayudar a tu empresa a crecer y evolucionar en un mundo digital.</p>
           </section>
           
-
-
-
-
-
       <!-- Sección "Quiénes somos" -->
       <div id="quienes-somos" class="company-info mt-5">
         <h2 class="section-title">¿Quiénes somos?</h2>
@@ -58,7 +55,7 @@
         <div class="row">
           <div class="col-md-4 mb-4">
             <div class="card product-card">
-              <img src="/img/producto1.jpg" alt="Producto 1">
+              <img src="./img/producto1.jpg" alt="Producto 1">
               <div class="card-body">
                 <h5 class="card-title">MAG B550 TOMAHAWK</h5>
                 <p class="card-text">Una placa base ATX de MSI equipada con el chipset B550, compatible con procesadores AMD Ryzen de tercera generación y superiores. Ofrece soporte para PCIe 4.0, un sistema de alimentación robusto para un rendimiento estable, y varias opciones de expansión.</p>
@@ -68,7 +65,7 @@
           </div>
           <div class="col-md-4 mb-4">
             <div class="card product-card">
-              <img src="/img/podructo2.jpg" alt="Producto 2">
+              <img src="./img/podructo2.jpg" alt="Producto 2">
               <div class="card-body">
                 <h5 class="card-title">Intel Core i7 14700KF</h5>
                 <p class="card-text">Un procesador de alto rendimiento de la 14ª generación de Intel, diseñado para usuarios que buscan potencia y eficiencia en tareas exigentes. Cuenta con múltiples núcleos y hilos, lo que lo hace ideal para gaming, creación de contenido y aplicaciones intensivas.</p>
@@ -78,7 +75,7 @@
           </div>
           <div class="col-md-4 mb-4">
             <div class="card product-card">
-              <img src="/img/producto3.jpg" alt="Producto 3">
+              <img src="./img/producto3.jpg" alt="Producto 3">
               <div class="card-body">
                 <h5 class="card-title">Fuente de poder 1000W ROG-THOR-1000P2-EVA-GAMING</h5>
                 <p class="card-text">Una fuente de poder de 1000W con certificación 80 PLUS Platinum, diseñada para gamers y entusiastas. Cuenta con un diseño exclusivo inspirado en Evangelion, pantalla OLED para monitorear el consumo de energía.</p>
@@ -96,9 +93,8 @@
 
     
     
-  </div> <!-- Cierre de content -->
+  </div> 
 
-    <!-- Agregar el enlace a Bootstrap 5 JS y dependencias de Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="./js/sidebar.js"></script>

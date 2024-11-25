@@ -15,11 +15,13 @@
 
   <!-- Barra lateral -->
   <div class="sidebar" id="sidebar">
+  <a href="index.php" class="sidebar-link">Inicio</a>
       <a href="gestion_empleados.php" class="sidebar-link">Gestión de Empleados</a>
       <a href="gestion_roles.php" class="sidebar-link">Gestión de Roles</a>
       <a href="gestion_departamentos.php" class="sidebar-link active">Gestión de Departamentos</a>
   </div>
 
+    <!-- Contenedor Principal -->
   <div class="content" id="content">
     <div class="container card p-3 mt-5">
         <h2 class="text-center">Gestión de Departamentos</h2>
@@ -47,7 +49,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Las filas se agregarán dinámicamente -->
+
             </tbody>
         </table>
     </div>
@@ -58,13 +60,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalAgregarLabel">Agregar Departamento</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="formDepartamento">
                         <div class="mb-3">
-                            <label for="nombreDepartamentoEditar" class="form-label">Nombre del Departamento</label>
-                            <input type="text" class="form-control" id="nombreDepartamentoEditar" required>
+                            <label for="nombreDepartamento" class="form-label">Nombre del Departamento</label>
+                            <input type="text" class="form-control" id="nombreDepartamento" required>
                         </div>
                     </form>
                 </div>
@@ -75,12 +77,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal para editar -->
     <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalEditarLabel">Editar Departamento</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form id="formEditarRol">
@@ -99,7 +103,6 @@
             </div>
   </div>
 
-  <!-- Vinculación de Bootstrap JS y Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/departamentos.js"></script>
   <script src="./js/sidebar.js"></script>
