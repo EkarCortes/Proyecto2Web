@@ -10,7 +10,7 @@
 h2 {
     font-size: 2rem;
     font-weight: bold;
-    color: #292a2b;
+    color: #07305a;
     margin-bottom: 20px;
 }
 
@@ -63,14 +63,14 @@ button:hover {
 
 button:disabled {
     opacity: 0.5;
-    background-color: #3A3B3B;
+    background-color: #07305a;
     cursor: not-allowed;
 }
 
 .btn-primary {
-    background-color: #343A40;
+    background-color: #07305a;
     color: white;
-    border: 1px solid #343A40;
+    border: 1px solid #07305a;
 }
 
 .btn-primary:hover {
@@ -79,7 +79,7 @@ button:disabled {
 }
 
 .btn-warning {
-    background-color: #343A40;
+    background-color: #07305a;
     color: white;
 }
 
@@ -88,7 +88,7 @@ button:disabled {
 }
 
 .btn-danger {
-    background-color: #343A40;
+    background-color: #07305a;
     color: white;
 }
 
@@ -106,7 +106,7 @@ button:disabled {
 }
 
 .modal-header {
-    background-color: #3A3B3B;
+    background-color: #07305a;
     color: white;
     padding: 15px;
 }

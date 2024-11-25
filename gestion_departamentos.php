@@ -40,7 +40,7 @@
 
         <!-- Tabla con datos -->
         <table id="tablaDepartamentos" class="card-shadow table table-striped table-hover">
-            <thead class="thead-dark" style="background-color: #343A40;">
+            <thead class="thead-dark" style="background-color: #07305a;">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>

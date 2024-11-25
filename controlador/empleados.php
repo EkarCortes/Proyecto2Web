@@ -45,7 +45,7 @@ switch ($_GET["op"]) {
     // Actualiza un empleado existente
     case "Actualizar":
         // Llama al método para actualizar un empleado existente
-        $datos = $empleado->actualizar_empleado($body["id_empleado"], $body["nombre"], $body["apellido"], $body["correo"], $body["id_departamento"], $body["id_rol"]);
+        $datos = $empleado->actualizar_empleado($body["id_empleado"], $body["nombre"], $body["apellido"], $body["correo"], $body["departamento"], $body["rol"]);
         // Devuelve una respuesta indicando que la actualización fue correcta
         echo json_encode(["Correcto" => "Actualización Realizada"]);
         break;

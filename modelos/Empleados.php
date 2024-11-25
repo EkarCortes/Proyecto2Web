@@ -64,7 +64,7 @@ class Empleado extends Conectar {
     }
 
     // Actualiza un empleado existente
-    public function actualizar_empleado($id_empleado, $nombre, $apellido, $correo, $id_departamento, $id_rol) {
+    public function actualizar_empleado($id_empleado, $nombre, $apellido, $correo, $departamento, $rol) {
         // Establece la conexión a la base de datos
         $conexion = parent::conectar_bd();
         parent::establecer_codificacion();
@@ -78,8 +78,8 @@ class Empleado extends Conectar {
         $sentencia->bindValue(1, $nombre);  // Asocia el nombre del empleado
         $sentencia->bindValue(2, $apellido);  // Asocia el apellido del empleado
         $sentencia->bindValue(3, $correo);  // Asocia el correo del empleado
-        $sentencia->bindValue(4, $id_departamento);  // Asocia el ID del departamento
-        $sentencia->bindValue(5, $id_rol);  // Asocia el ID del rol
+        $sentencia->bindValue(4, $departamento);  // Asocia el ID del departamento
+        $sentencia->bindValue(5, $rol);  // Asocia el ID del rol
         $sentencia->bindValue(6, $id_empleado);  // Asocia el ID del empleado a actualizar
 
         // Ejecuta la sentencia

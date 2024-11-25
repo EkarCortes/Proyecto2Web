@@ -44,7 +44,7 @@
 
     <!-- Tabla con datos -->
      <table id="tablaEmpleados" class=" card-shadow table table-striped table-hover">
-        <thead class="thead-dark" style="background-color: #343A40;">
+        <thead class="thead-dark" style="background-color: #07305a;">
     
             <tr>
                 <th>ID</th>
@@ -55,7 +55,7 @@
                 <th>Rol</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="background-color: #dfdfdf;">
             <!-- Filas de datos se agregarán dinámicamente -->
         </tbody>
     </table>
@@ -102,6 +102,50 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
+            </div>
+        </div>
+    </div>
+  </div>
+<div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditarLabel">Editar Empleado</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditarEmpleado">
+                    <div class="mb-3">
+                        <label for="nombreEditar" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreEditar" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellidoEditar" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellidoEditar" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correoEditar" class="form-label">Correo</label>
+                        <input type="email" class="form-control" id="correoEditar" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="departamentoEditar" class="form-label">Departamento</label>
+                        <select class="form-control" id="departamentoEditar" required>
+                            <option value="">Seleccione un Departamento</option>
+                            <!-- Los departamentos serán llenados dinámicamente desde la base de datos -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dolEditar" class="form-label">Rol</label>
+                        <select class="form-control" id="rolEditar" required>
+                            <option value="">Seleccione un Rol</option>
+                            <!-- Los roles serán llenados dinámicamente desde la base de datos -->
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-warning" id="btnActualizarEmpleado">Actualizar</button>
             </div>
         </div>
     </div>

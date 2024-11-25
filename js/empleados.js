@@ -27,10 +27,11 @@ function cargarEmpleados() {
         .catch(error => console.error('Error al cargar los empleados:', error));
 }
 
+
 // Función para seleccionar una fila
 function seleccionarFila(fila, empleado) {
     // Desmarcar cualquier fila previamente seleccionada
-    const filas = document.getElementById('tablaRoles').getElementsByTagName('tr');
+    const filas = document.getElementById('tablaEmpleados').getElementsByTagName('tr');
     for (let i = 0; i < filas.length; i++) {
         filas[i].classList.remove('seleccionado');
     }
@@ -41,10 +42,19 @@ function seleccionarFila(fila, empleado) {
     // Guardar el empleado seleccionado
     empleadoSeleccionado = empleado;
 
+    // Asignar los valores a los campos del formulario
+    document.getElementById('nombreEditar').value = empleado.nombre;
+    document.getElementById('apellidoEditar').value = empleado.apellido;
+    document.getElementById('correoEditar').value = empleado.correo;
+
+    // Cargar roles y departamentos en los select y preseleccionar los actuales
+    cargarDepartamentosYRolesEditar(empleado);
+
     // Habilitar los botones de Editar y Eliminar
     document.getElementById('btnEditar').disabled = false;
     document.getElementById('btnEliminar').disabled = false;
 }
+
 
 // Función para agregar un nuevo empleado
 function agregarEmpleado() {
@@ -75,6 +85,45 @@ function agregarEmpleado() {
             alert('Error al agregar el empleado');
         });
 }
+function EditarEmpleado() {
+    if (!empleadoSeleccionado) {
+        alert('Debe seleccionar un empleado antes de editar.');
+        return;
+    }
+
+    const nombre = document.getElementById('nombreEditar').value;
+    const apellido = document.getElementById('apellidoEditar').value;
+    const correo = document.getElementById('correoEditar').value;
+    const departamento = document.getElementById('departamentoEditar').value;
+    const rol = document.getElementById('rolEditar').value;
+
+    if (nombre.trim() === '' || apellido.trim() === '' || correo.trim() === '' || departamento === '' || rol === '') {
+        alert('Por favor complete todos los campos');
+        return;
+    }
+
+    const data = { 
+        nombre, 
+        apellido, 
+        correo, 
+        departamento, 
+        rol, 
+        id_empleado: empleadoSeleccionado.id_empleado // Asegúrate de enviar "id_empleado"
+    };
+
+    axios.post('http://localhost/Proyecto2Web/controlador/empleados.php?op=Actualizar', data)
+        .then(response => {
+            alert('Empleado actualizado correctamente');
+            cargarEmpleados();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalEditar'));
+            modal.hide();
+        })
+        .catch(error => {
+            console.error('Error al actualizar el empleado:', error);
+            alert('Error al actualizar el empleado');
+        });
+}
+
 
 // Función para limpiar los campos del modal de agregar
 function limpiarCamposAgregar() {
@@ -116,6 +165,70 @@ function cargarDepartamentosYRoles() {
         .catch(error => console.error('Error al cargar los roles:', error));
 }
 
+// Función para eliminar un empleado
+function eliminarEmpleado() {
+    if (!empleadoSeleccionado) {
+        alert('Por favor selecciona un empleado para eliminar');
+        return;
+    }
+
+    const confirmation = confirm(`¿Estás seguro que deseas eliminar el empleado "${empleadoSeleccionado.nombre} ${empleadoSeleccionado.apellido}"?`);
+
+    if (confirmation) {
+        axios.post('http://localhost/Proyecto2Web/controlador/empleados.php?op=Eliminar', { id_empleado: empleadoSeleccionado.id_empleado })
+            .then(response => {
+                console.log('Empleado eliminado correctamente');
+                cargarEmpleados();  // Recargar los emple
+            }
+            )
+            .catch(error => {
+                console.error('Error al eliminar el empleado:', error);
+                console.log('Error al eliminar el empleado');
+            }
+            );
+    }
+}
+
+// Función para cargar roles y departamentos en el formulario de edición
+function cargarDepartamentosYRolesEditar(empleado) {
+    // Limpiar opciones previas en los select
+    const selectDepartamento = document.getElementById('departamentoEditar');
+    const selectRol = document.getElementById('rolEditar');
+    selectDepartamento.innerHTML = '<option value="">Seleccione un departamento</option>';
+    selectRol.innerHTML = '<option value="">Seleccione un rol</option>';
+
+    // Cargar departamentos
+    axios.get('http://localhost/Proyecto2Web/controlador/departamentos.php?op=ObtenerTodos')
+        .then(response => {
+            const departamentos = response.data;
+            departamentos.forEach(departamento => {
+                const option = document.createElement('option');
+                option.value = departamento.nombre_departamento;
+                option.textContent = departamento.nombre_departamento;
+                if (departamento.nombre_departamento === empleado.departamento.nombre_departamento) {
+                    option.selected = true; // Seleccionar el departamento actual
+                }
+                selectDepartamento.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar los departamentos:', error));
+
+    // Cargar roles
+    axios.get('http://localhost/Proyecto2Web/controlador/roles.php?op=ObtenerTodos')
+        .then(response => {
+            const roles = response.data;
+            roles.forEach(rol => {
+                const option = document.createElement('option');
+                option.value = rol.nombre_rol;
+                option.textContent = rol.nombre_rol;
+                if (rol.nombre_rol === empleado.rol.nombre_rol) {
+                    option.selected = true; // Seleccionar el rol actual
+                }
+                selectRol.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar los roles:', error));
+}
 // Asignar eventos a los botones
 document.addEventListener('DOMContentLoaded', () => {
     cargarEmpleados(); // Cargar los empleados al iniciar la página
@@ -123,12 +236,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Evento para el botón "Guardar" (Agregar empleado)
     document.getElementById('btnGuardar').addEventListener('click', agregarEmpleado);
+    // Evento para el botón "Guardar" (Editar empleado)
+    document.getElementById('btnActualizarEmpleado').addEventListener('click', EditarEmpleado);
+
+    // Evento para el botón ELIMINAR
+    document.getElementById('btnEliminar').addEventListener('click', eliminarEmpleado);
 });
 
 // Función para buscar empleados por ID
 function buscarRegistro() {
     const idBusqueda = document.getElementById('searchId').value.trim();
-    const tabla = document.getElementById('tablaRoles');
+    const tabla = document.getElementById('tablaEmpleados');
     const filas = tabla.getElementsByTagName('tr');
 
     for (let i = 1; i < filas.length; i++) {

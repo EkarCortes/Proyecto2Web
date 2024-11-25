@@ -23,6 +23,7 @@ function cargarRoles() {
 }
 // Función para seleccionar una fila
 function seleccionarFila(fila, rol) {
+    
     // Desmarcar cualquier fila previamente seleccionada
     const filas = document.getElementById('tablaRoles').getElementsByTagName('tr');
     for (let i = 0; i < filas.length; i++) {
@@ -86,6 +87,7 @@ function actualizarRol() {
         id_rol: rolSeleccionado.id_rol,
         nombre_rol: nombreRol
     };
+   
 
     // Llamada para actualizar el rol
     axios.post('http://localhost/Proyecto2Web/controlador/roles.php?op=Actualizar', data)
