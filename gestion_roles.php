@@ -7,8 +7,8 @@
     <title>Gestión de Roles</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/gestion.css">
-    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="./css/gestion.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
 </head>
 
 <body>
@@ -17,9 +17,9 @@
 
     <!-- Barra lateral -->
     <div class="sidebar" id="sidebar">
-        <a href="gestion_empleados.html" class="sidebar-link">Gestión de Empleados</a>
-        <a href="gestion_roles.html" class="sidebar-link active">Gestión de Roles</a>
-        <a href="gestion_departamentos.html" class="sidebar-link">Gestión de Departamentos</a>
+        <a href="gestion_empleados.php" class="sidebar-link">Gestión de Empleados</a>
+        <a href="gestion_roles.php" class="sidebar-link active">Gestión de Roles</a>
+        <a href="gestion_departamentos.php" class="sidebar-link">Gestión de Departamentos</a>
     </div>
 
     <div class="content" id="content">
@@ -109,8 +109,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="/js/roles.js"></script>
-    <script src="/js/sidebar.js"></script>
+    <script src="./js/roles.js"></script>
+    <script src="./js/sidebar.js"></script>
 </body>
 
 </html>

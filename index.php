@@ -6,16 +6,16 @@
   <title>Alkar - Soluciones Tecnológicas</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/sidebar.css">
+  <link rel="stylesheet" href="./css/sidebar.css">
 </head>
 <body>
   <!-- Barra lateral y botón de alternar (como en el ejemplo anterior) -->
   <button class="toggle-btn" id="toggleButton" style="right: 20px; left: auto;"><i class="bi bi-list"></i></button>
 
   <div class="sidebar" id="sidebar">
-    <a href="gestion_empleados.html">Gestión de Empleados</a>
-    <a href="gestion_roles.html">Gestión de Roles</a>
-    <a href="departamentos.html">Gestión de Departamentos</a>
+    <a href="gestion_empleados.php">Gestión de Empleados</a>
+    <a href="gestion_roles.php">Gestión de Roles</a>
+    <a href="gestion_departamentos.php">Gestión de Departamentos</a>
   </div>
 
   <!-- Contenido principal -->
@@ -94,30 +94,6 @@
       <p>&copy; 2024 Alkar - Soluciones Tecnológicas. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Agregar el enlace a Bootstrap 5 JS y dependencias de Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-    <!-- Script para alternar la barra lateral -->
-    <script>
-      // Función para alternar la barra lateral
-      const toggleButton = document.getElementById('toggleButton');
-      const sidebar = document.getElementById('sidebar');
-      const content = document.getElementById('content');
-
-      toggleButton.addEventListener('click', () => {
-      sidebar.classList.toggle('active'); // Alterna la visibilidad de la barra lateral
-      content.classList.toggle('shifted'); // Desplaza el contenido
-      });
-
-    </script>
-
-    <!-- Agregar desplazamiento suave -->
-    <style>
-      html {
-        scroll-behavior: smooth; /* Habilita el desplazamiento suave en todos los enlaces */
-      }
-    </style>
     
     
   </div> <!-- Cierre de content -->
@@ -125,7 +101,7 @@
     <!-- Agregar el enlace a Bootstrap 5 JS y dependencias de Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script src="/js/sidebar.js"></script>
+    <script src="./js/sidebar.js"></script>
   
 </body>
 </html>

@@ -46,12 +46,11 @@ class Departamento extends Conectar {
         parent::establecer_codificacion();
         
         // Sentencia SQL para insertar un nuevo departamento
-        $sentencia_sql = "INSERT INTO departamentos(nombre_departamento, descripcion) VALUES (?, ?)";
+        $sentencia_sql = "INSERT INTO departamentos(nombre_departamento) VALUES (?)";
 
         // Prepara la sentencia SQL
         $sentencia = $conexion->prepare($sentencia_sql);
-        $sentencia->bindValue(1, $nombre_departamento);  // Asocia el nombre del departamento
-        $sentencia->bindValue(2, $descripcion);  // Asocia la descripción del departamento
+        $sentencia->bindValue(1, $nombre_departamento);// Asocia el nombre del departamento
 
         // Ejecuta la sentencia
         $sentencia->execute();

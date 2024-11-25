@@ -1,17 +1,4 @@
 
-<?php
-// Encabezados CORS
-header("Access-Control-Allow-Origin: *");  // Permite solicitudes de cualquier origen (puedes especificar un dominio específico en lugar de "*")
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");  // Métodos HTTP permitidos
-header("Access-Control-Allow-Headers: Content-Type");  // Encabezados permitidos
-
-// Si la solicitud es una preflight (OPTIONS), responde y termina la ejecución.
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    exit(0);
-}
-
-// El resto de tu código PHP
-?>
 
 <?php
 
