@@ -63,8 +63,8 @@
                 <div class="modal-body">
                     <form id="formDepartamento">
                         <div class="mb-3">
-                            <label for="nombreDepartamento" class="form-label">Nombre del Departamento</label>
-                            <input type="text" class="form-control" id="nombreDepartamento" required>
+                            <label for="nombreDepartamentoEditar" class="form-label">Nombre del Departamento</label>
+                            <input type="text" class="form-control" id="nombreDepartamentoEditar" required>
                         </div>
                     </form>
                 </div>
@@ -75,6 +75,28 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditarLabel">Editar Departamento</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formEditarRol">
+                                <div class="mb-3">
+                                    <label for="nombreDepartamentoEditar" class="form-label">Nombre Departamento</label>
+                                    <input type="text" class="form-control" id="nombreDepartamentoEditar" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-warning" id="btnActualizarDepartamento">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
   </div>
 
   <!-- Vinculación de Bootstrap JS y Scripts -->
