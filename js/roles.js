@@ -2,7 +2,7 @@ let rolSeleccionado = null;  // Variable global para almacenar el rol selecciona
 
 // Función para cargar roles desde el servidor
 function cargarRoles() {
-    axios.get('http://localhost/Proyecto2Web/controlador/roles.php?op=ObtenerTodos')
+    axios.get('https://gestionempleadosapi.azurewebsites.net/controlador/roles.php?op=ObtenerTodos')
         .then(response => {
             const roles = response.data;
             const tabla = document.getElementById('tablaRoles').getElementsByTagName('tbody')[0];
@@ -60,7 +60,7 @@ function agregarRol() {
     const data = { nombre_rol: nombreRol };
 
     // Llamada para agregar rol
-    axios.post('http://localhost/Proyecto2Web/controlador/roles.php?op=Insertar', data)
+    axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/roles.php?op=Insertar', data)
         .then(response => {
             alert('Rol agregado correctamente');
             cargarRoles();  // Recargar los roles
@@ -90,7 +90,7 @@ function actualizarRol() {
    
 
     // Llamada para actualizar el rol
-    axios.post('http://localhost/Proyecto2Web/controlador/roles.php?op=Actualizar', data)
+    axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/roles.php?op=Actualizar', data)
         .then(response => {
             alert('Rol actualizado correctamente');
             cargarRoles();  // Recargar los roles
@@ -115,7 +115,7 @@ function eliminarRol() {
 
     if (confirmation) {
         // Llamada para eliminar el rol
-        axios.post('http://localhost/Proyecto2Web/controlador/roles.php?op=Eliminar', { id_rol: rolSeleccionado.id_rol })
+        axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/roles.php?op=Eliminar', { id_rol: rolSeleccionado.id_rol })
             .then(response => {
                 alert('Rol eliminado correctamente');
                 cargarRoles();  // Recargar los roles

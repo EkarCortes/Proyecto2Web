@@ -2,7 +2,7 @@ let departamentoSeleccionado = null;  // Variable global para almacenar el depar
 
 // Función para cargar departamentos desde el servidor
 function cargarDepartamentos() {
-    axios.get('http://localhost/Proyecto2Web/controlador/departamentos.php?op=ObtenerTodos')
+    axios.get('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=ObtenerTodos')
         .then(response => {
             const departamentos = response.data;
             const tabla = document.getElementById('tablaDepartamentos').getElementsByTagName('tbody')[0];
@@ -55,7 +55,7 @@ function agregarDepartamento() {
 
     const data = { nombre_departamento: nombreDepartamento };
 
-    axios.post('http://localhost/Proyecto2Web/controlador/departamentos.php?op=Insertar', data)
+    axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=Insertar', data)
         .then(response => {
             alert('Departamento agregado correctamente');
             cargarDepartamentos(); // Recargar la lista de departamentos
@@ -88,7 +88,7 @@ function actualizarDepartamento() {
 
 
     // Llamada para actualizar el departamento
-    axios.post('http://localhost/Proyecto2Web/controlador/departamentos.php?op=Actualizar', data)
+    axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=Actualizar', data)
         .then(response => {
             alert('Departamento actualizado correctamente');
             cargarDepartamentos();  // Recargar los departamentos
@@ -114,7 +114,7 @@ function eliminarDepartamento() {
 
     if (confirmation) {
         // Llamada para eliminar el departamento
-        axios.post('http://localhost/Proyecto2Web/controlador/departamentos.php?op=Eliminar', { id_departamento: departamentoSeleccionado.id_departamento })
+        axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=Eliminar', { id_departamento: departamentoSeleccionado.id_departamento })
             .then(response => {
                 alert('Departamento eliminado correctamente');
                 cargarDepartamentos();  // Recargar los departamentos

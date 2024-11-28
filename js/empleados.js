@@ -3,7 +3,7 @@ let empleadoSeleccionado = null;
 
 // Función para cargar los empleados desde el servidor
 function cargarEmpleados() {
-    axios.get('http://localhost/Proyecto2Web/controlador/empleados.php?op=ObtenerTodos')
+    axios.get('https://gestionempleadosapi.azurewebsites.net/controlador/empleados.php?op=ObtenerTodos')
         .then(response => {
             const empleados = response.data;
             const tabla = document.getElementById('tablaEmpleados').getElementsByTagName('tbody')[0];
@@ -72,7 +72,7 @@ function agregarEmpleado() {
     const data = { nombre, apellido, correo, departamento, rol };
 
     // Llamada para agregar el empleado
-    axios.post('http://localhost/Proyecto2Web/controlador/empleados.php?op=Insertar', data)
+    axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/empleados.php?op=Insertar', data)
         .then(response => {
             alert('Empleado agregado correctamente');
             cargarEmpleados();  // Recargar la lista de empleados
@@ -111,7 +111,7 @@ function EditarEmpleado() {
         id_empleado: empleadoSeleccionado.id_empleado // Asegúrate de enviar "id_empleado"
     };
 
-    axios.post('http://localhost/Proyecto2Web/controlador/empleados.php?op=Actualizar', data)
+    axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/empleados.php?op=Actualizar', data)
         .then(response => {
             alert('Empleado actualizado correctamente');
             cargarEmpleados();
@@ -137,7 +137,7 @@ function limpiarCamposAgregar() {
 // Función para cargar departamentos y roles en los campos del modal de agregar
 function cargarDepartamentosYRoles() {
     // Cargar departamentos
-    axios.get('http://localhost/Proyecto2Web/controlador/departamentos.php?op=ObtenerTodos')
+    axios.get('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=ObtenerTodos')
         .then(response => {
             const departamentos = response.data;
             const selectDepartamento = document.getElementById('idDepartamento');
@@ -151,7 +151,7 @@ function cargarDepartamentosYRoles() {
         .catch(error => console.error('Error al cargar los departamentos:', error));
 
     // Cargar roles
-    axios.get('http://localhost/Proyecto2Web/controlador/roles.php?op=ObtenerTodos')
+    axios.get('https://gestionempleadosapi.azurewebsites.net/controlador/roles.php?op=ObtenerTodos')
         .then(response => {
             const roles = response.data;
             const selectRol = document.getElementById('idRol');
@@ -175,7 +175,7 @@ function eliminarEmpleado() {
     const confirmation = confirm(`¿Estás seguro que deseas eliminar el empleado "${empleadoSeleccionado.nombre} ${empleadoSeleccionado.apellido}"?`);
 
     if (confirmation) {
-        axios.post('http://localhost/Proyecto2Web/controlador/empleados.php?op=Eliminar', { id_empleado: empleadoSeleccionado.id_empleado })
+        axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/empleados.php?op=Eliminar', { id_empleado: empleadoSeleccionado.id_empleado })
             .then(response => {
                 console.log('Empleado eliminado correctamente');
                 cargarEmpleados();  // Recargar los emple
@@ -198,7 +198,7 @@ function cargarDepartamentosYRolesEditar(empleado) {
     selectRol.innerHTML = '<option value="">Seleccione un rol</option>';
 
     // Cargar departamentos
-    axios.get('http://localhost/Proyecto2Web/controlador/departamentos.php?op=ObtenerTodos')
+    axios.get('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=ObtenerTodos')
         .then(response => {
             const departamentos = response.data;
             departamentos.forEach(departamento => {
@@ -214,7 +214,7 @@ function cargarDepartamentosYRolesEditar(empleado) {
         .catch(error => console.error('Error al cargar los departamentos:', error));
 
     // Cargar roles
-    axios.get('http://localhost/Proyecto2Web/controlador/roles.php?op=ObtenerTodos')
+    axios.get('https://gestionempleadosapi.azurewebsites.net/controlador/roles.php?op=ObtenerTodos')
         .then(response => {
             const roles = response.data;
             roles.forEach(rol => {
