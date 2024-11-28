@@ -16,7 +16,7 @@
     <button class="toggle-btn" id="toggleButton" style="right: 20px; left: auto;"><i class="bi bi-list"></i></button>
 
     <!-- Barra lateral -->
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar" id="sidebar" style="">
     <a href="index.php" class="sidebar-link">Inicio</a>
         <a href="gestion_empleados.php" class="sidebar-link">Gestión de Empleados</a>
         <a href="gestion_roles.php" class="sidebar-link active">Gestión de Roles</a>

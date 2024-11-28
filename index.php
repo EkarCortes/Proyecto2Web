@@ -22,8 +22,9 @@
 
   <!-- Contenido principal -->
   <div class="content" id="content">
+    <div class="row">
     <div class="container-fluid">
-        <section id="head_principal" class="text-center flex-column justify-content-center align-items-center">
+        <section id="head_principal" class="container-fluid text-center flex-column justify-content-center align-items-center">
             <h1 class="mt-4">Bienvenido a Alkar - Soluciones Tecnológicas</h1>
             <p>Ofrecemos soluciones innovadoras en tecnología para ayudar a tu empresa a crecer y evolucionar en un mundo digital.</p>
           </section>
@@ -94,6 +95,7 @@
     
     
   </div> 
+  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>

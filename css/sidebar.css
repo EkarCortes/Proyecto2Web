@@ -113,6 +113,8 @@
     background-color: #07305a; 
     color: white; 
     padding: 35px 20px;
+  
+    width: 100%;
   }
   
   button {
