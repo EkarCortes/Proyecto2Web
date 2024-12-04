@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    <!-- Botón para abrir y cerrar la barra lateral -->
+
     <button class="toggle-btn" id="toggleButton" style="right: 20px; left: auto;"><i class="bi bi-list"></i></button>
 
-    <!-- Barra lateral -->
+
     <div class="sidebar" id="sidebar" style="">
     <a href="index.php" class="sidebar-link">Inicio</a>
         <a href="gestion_empleados.php" class="sidebar-link">Gestión de Empleados</a>
@@ -23,7 +23,7 @@
         <a href="gestion_departamentos.php" class="sidebar-link">Gestión de Departamentos</a>
     </div>
 
-     <!-- Contenedor Principal -->
+
     <div class="content" id="content">
         <div class="container card p-3 mt-5 shadow-lg">
             <h2 class="text-center ">Gestión de Roles</h2>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <!-- Tabla con datos -->
+   
                 <table id="tablaRoles" class=" card-shadow table table-striped table-hover">
                     <thead class="thead-dark" style="background-color: #07305a;">
                         <tr>
@@ -57,7 +57,7 @@
                 </table>
             </div>
 
-            <!-- Modal para Agregar Rol -->
+      
             <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -81,7 +81,7 @@
                 </div>
             </div>
 
-            <!-- Modal para Editar Rol -->
+      
             <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

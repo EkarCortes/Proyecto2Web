@@ -1,4 +1,4 @@
-let rolSeleccionado = null;  // Variable global para almacenar el rol seleccionado para editar
+let rolSeleccionado = null;  
 
 // Función para cargar roles desde el servidor
 function cargarRoles() {
@@ -6,11 +6,11 @@ function cargarRoles() {
         .then(response => {
             const roles = response.data;
             const tabla = document.getElementById('tablaRoles').getElementsByTagName('tbody')[0];
-            tabla.innerHTML = '';  // Limpiar la tabla antes de llenarla
+            tabla.innerHTML = ''; 
 
             roles.forEach(rol => {
                 const fila = tabla.insertRow();
-                fila.setAttribute('data-id', rol.id_rol);  // Establecer el ID del rol como atributo
+                fila.setAttribute('data-id', rol.id_rol); 
                 fila.innerHTML = `
                     <td>${rol.id_rol}</td>
                     <td>${rol.nombre_rol}</td>
@@ -93,7 +93,7 @@ function actualizarRol() {
     axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/roles.php?op=Actualizar', data)
         .then(response => {
             alert('Rol actualizado correctamente');
-            cargarRoles();  // Recargar los roles
+            cargarRoles();  
             limpiarCamposEditar();
             const modal = bootstrap.Modal.getInstance(document.getElementById('modalEditar'));
             modal.hide();
@@ -118,7 +118,7 @@ function eliminarRol() {
         axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/roles.php?op=Eliminar', { id_rol: rolSeleccionado.id_rol })
             .then(response => {
                 alert('Rol eliminado correctamente');
-                cargarRoles();  // Recargar los roles
+                cargarRoles();  
                 limpiarCamposEditar();
             })
             .catch(error => {

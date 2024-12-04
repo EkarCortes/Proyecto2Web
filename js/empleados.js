@@ -7,11 +7,11 @@ function cargarEmpleados() {
         .then(response => {
             const empleados = response.data;
             const tabla = document.getElementById('tablaEmpleados').getElementsByTagName('tbody')[0];
-            tabla.innerHTML = '';  // Limpiar la tabla antes de llenarla
+            tabla.innerHTML = '';  
 
             empleados.forEach(empleado => {
                 const fila = tabla.insertRow();
-                fila.setAttribute('data-id', empleado.id_empleado);  // Establecer el ID del empleado como atributo
+                fila.setAttribute('data-id', empleado.id_empleado);  
                 fila.innerHTML = `
                     <td>${empleado.id_empleado}</td>
                     <td>${empleado.nombre}</td>
@@ -75,7 +75,7 @@ function agregarEmpleado() {
     axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/empleados.php?op=Insertar', data)
         .then(response => {
             alert('Empleado agregado correctamente');
-            cargarEmpleados();  // Recargar la lista de empleados
+            cargarEmpleados();  
             limpiarCamposAgregar();
             const modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregar'));
             modal.hide();
@@ -85,6 +85,8 @@ function agregarEmpleado() {
             alert('Error al agregar el empleado');
         });
 }
+
+// Función para editar un empleado
 function EditarEmpleado() {
     if (!empleadoSeleccionado) {
         alert('Debe seleccionar un empleado antes de editar.');
@@ -108,7 +110,7 @@ function EditarEmpleado() {
         correo, 
         departamento, 
         rol, 
-        id_empleado: empleadoSeleccionado.id_empleado // Asegúrate de enviar "id_empleado"
+        id_empleado: empleadoSeleccionado.id_empleado 
     };
 
     axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/empleados.php?op=Actualizar', data)
@@ -136,6 +138,7 @@ function limpiarCamposAgregar() {
 
 // Función para cargar departamentos y roles en los campos del modal de agregar
 function cargarDepartamentosYRoles() {
+
     // Cargar departamentos
     axios.get('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=ObtenerTodos')
         .then(response => {
@@ -178,7 +181,7 @@ function eliminarEmpleado() {
         axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/empleados.php?op=Eliminar', { id_empleado: empleadoSeleccionado.id_empleado })
             .then(response => {
                 console.log('Empleado eliminado correctamente');
-                cargarEmpleados();  // Recargar los emple
+                cargarEmpleados();  
             }
             )
             .catch(error => {

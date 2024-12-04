@@ -6,7 +6,7 @@ function cargarDepartamentos() {
         .then(response => {
             const departamentos = response.data;
             const tabla = document.getElementById('tablaDepartamentos').getElementsByTagName('tbody')[0];
-            tabla.innerHTML = '';  // Limpiar la tabla antes de llenarla
+            tabla.innerHTML = '';  
 
             departamentos.forEach(departamento => {
                 const fila = tabla.insertRow();
@@ -58,8 +58,8 @@ function agregarDepartamento() {
     axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=Insertar', data)
         .then(response => {
             alert('Departamento agregado correctamente');
-            cargarDepartamentos(); // Recargar la lista de departamentos
-            document.getElementById('nombreDepartamento').value = ''; // Limpiar el campo
+            cargarDepartamentos(); 
+            document.getElementById('nombreDepartamento').value = ''; 
             const modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregar'));
             modal.hide();
         })
@@ -68,8 +68,6 @@ function agregarDepartamento() {
             alert('Error al agregar el departamento');
         });
 }
-
-// Similarmente actualiza las funciones para Editar y Eliminar, solo manejando `id_departamento` y `nombre_departamento`.
 
 
 // Función para actualizar un departamento
@@ -91,7 +89,7 @@ function actualizarDepartamento() {
     axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=Actualizar', data)
         .then(response => {
             alert('Departamento actualizado correctamente');
-            cargarDepartamentos();  // Recargar los departamentos
+            cargarDepartamentos();
             limpiarCamposEditar();
             console.log(data);
             const modal = bootstrap.Modal.getInstance(document.getElementById('modalEditar'));
@@ -117,7 +115,7 @@ function eliminarDepartamento() {
         axios.post('https://gestionempleadosapi.azurewebsites.net/controlador/departamentos.php?op=Eliminar', { id_departamento: departamentoSeleccionado.id_departamento })
             .then(response => {
                 alert('Departamento eliminado correctamente');
-                cargarDepartamentos();  // Recargar los departamentos
+                cargarDepartamentos();  
                 limpiarCamposEditar();
             })
             .catch(error => {
